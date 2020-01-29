@@ -50,5 +50,23 @@ namespace Calculator.Test.Unit
             //Act + Assert
             Assert.That(uut.Power(3, 3), Is.EqualTo(27));
         }
+
+        [Test]
+        public void Test_Divide_3()
+        {
+            //Arrange in Setup 
+
+            //Act + Assert
+            Assert.That(uut.Divide(15, 5), Is.EqualTo(3));
+        }
+        [Test]
+        public void Test_Divider_0()
+        {
+            //Arrange in Setup 
+
+            //Act + Assert
+            Assert.That(uut.Divide(3, 0), Is.EqualTo(0));
+        }
+
     }
 }

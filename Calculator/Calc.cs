@@ -35,5 +35,20 @@ namespace Calculator
 
             return result;
         }
+
+        public double Divide(double dividend, double divisor)
+        {
+            if (divisor != 0)
+            {
+                double result = dividend / divisor;
+                return result;
+            }
+            else
+            {
+                return 0;
+            }
+            
+        }
+
     }
 }

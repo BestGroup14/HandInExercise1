@@ -95,19 +95,6 @@ namespace Calculator.Test.Unit
         }
 
         [Test]
-        public void Test_Accumulator_Add_Subtract_0()
-        {
-            //Arrange in Setup 
-
-            //Act
-            uut.Add(2, 3);
-            uut.Subtract(5, 7);
-
-            //Assert
-            Assert.That(uut.Accumulator, Is.EqualTo(0));
-        }
-
-        [Test]
         public void Test_Accumulator_Add_Clear_zero()
         {
             //Arrange in Setup 
@@ -220,6 +207,19 @@ namespace Calculator.Test.Unit
 
             //Assert
             Assert.That(uut.Accumulator, Is.EqualTo(1));
+        }
+
+        [Test]
+        public void Test_Divide1_Exception()
+        {
+            //Arrange in Setup 
+
+            //Act
+            uut.Clear();
+            uut.Add1(10);
+
+            //Assert
+            Assert.Catch<Exception>(() => uut.Divide1(0));
         }
     }
 }

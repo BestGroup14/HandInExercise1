@@ -8,108 +8,99 @@ namespace Calculator
 {
     public class Calc
     {
-        private double Accu;
         public double Accumulator
         {
-            get { return Accu; }
-
-            private set
-            {
-                if (Accu > 0)
-                {
-                    Accumulator = Accu;
-                }
-                else
-                    Accumulator = 0;
-            }
+            get; private set;
         }
 
         public double Add1(double addend)
         {
-            Accu = Accu + addend;
+            Accumulator = Accumulator + addend;
 
-            return Accu;
+            return Accumulator;
         }
 
         public double Subtract1(double subtractor)
         {
-            Accu = Accu - subtractor;
+            Accumulator = Accumulator - subtractor;
 
-            return Accu;
+            return Accumulator;
         }
 
         public double Multiply1(double multiplier)
         {
-            Accu = Accu * multiplier;
+            Accumulator = Accumulator * multiplier;
 
-            return Accu;
+            return Accumulator;
         }
 
         public double Power1(double exponent)
         {
             if (exponent > 0)
             {
-                Accu = Math.Pow(Accu, exponent);
+                Accumulator = Math.Pow(Accumulator, exponent);
             }
             else if (exponent < 0)
             {
-                Accu = (1 / Math.Pow(Accu, -exponent));
+                Accumulator = (1 / Math.Pow(Accumulator, -exponent));
             }
             else if(exponent == 0)
             {
-                Accu = 1;
+                Accumulator = 1;
             }
 
-            return Accu;
+            return Accumulator;
         }
 
         public double Divide1(double divisor)
         {
-            if (divisor != 0)
+            try
             {
-                Accu = Accu / divisor;
-                return Accu;
+                Convert.ToDecimal(Accumulator = Accumulator / divisor);
             }
-            else
+            catch (Exception e)
             {
-                return 0;
+                Console.WriteLine(e);
+                throw;
             }
+
+            return Accumulator;
         }
 
         public double Add(double a, double b)
         {
-            Accu = a + b;
+            Accumulator = a + b;
 
-            return Accu;
+            return Accumulator;
         }
 
         public double Subtract(double a, double b)
         {
-            Accu = a - b;
+            Accumulator = a - b;
 
-            return Accu;
+            return Accumulator;
         }
 
         public double Multiply(double a, double b)
         {
-            Accu = a * b;
+            Accumulator = a * b;
 
-            return Accu;
+            return Accumulator;
         }
 
         public double Power(double x, double exp)
         {
-            Accu = Math.Pow(x, exp);
+            Accumulator = Math.Pow(x, exp);
 
-            return Accu;
+            return Accumulator;
         }
 
         public double Divide(double dividend, double divisor)
         {
             if (divisor != 0)
             {
-                Accu = dividend / divisor;
-                return Accu;
+                Accumulator = dividend / divisor;
+                return Accumulator;
             }
             else
             {
@@ -119,7 +110,7 @@ namespace Calculator
 
         public void Clear()
         {
-            Accu = 0;
+            Accumulator = 0;
         }
 
     }

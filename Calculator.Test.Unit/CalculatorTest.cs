@@ -15,40 +15,36 @@ namespace Calculator.Test.Unit
             uut = new Calc();
         }
 
-        [Test]
-        public void Test_Add_91()
+        [TestCase(10,5,15)]
+        [TestCase(30,2,32)]
+        [TestCase(200,43,243)]
+        public void Test_Add(double a, double b, double c)
         {
-            //Arrange in Setup 
-
-            //Act + Assert
-            Assert.That(uut.Add(24,67),Is.EqualTo(91));
+            Assert.That(uut.Add(a,b),Is.EqualTo(c));
         }
 
-        [Test]
-        public void Test_Subtract_55()
+        [TestCase(100,99,1)]
+        [TestCase(20,3,17)]
+        [TestCase(40,6,34)]
+        public void Test_Subtract(double a,double b,double c)
         {
-            //Arrange in Setup 
-
-            //Act + Assert
-            Assert.That(uut.Subtract(100,45), Is.EqualTo(55));
+            Assert.That(uut.Subtract(a,b), Is.EqualTo(c));
         }
 
-        [Test]
-        public void Test_Multiply_120()
+        [TestCase(2,10,20)]
+        [TestCase(3,7,21)]
+        [TestCase(4,3,12)]
+        public void Test_Multiply(double a, double b, double c)
         {
-            //Arrange in Setup 
-
-            //Act + Assert
-            Assert.That(uut.Multiply(20, 6), Is.EqualTo(120));
+            Assert.That(uut.Multiply(a, b), Is.EqualTo(c));
         }
 
-        [Test]
-        public void Test_Power_27()
+        [TestCase(3,3,27)]
+        [TestCase(2,2,4)]
+        [TestCase(100,2,10000)]
+        public void Test_Power(double a, double b, double c)
         {
-            //Arrange in Setup 
-
-            //Act + Assert
-            Assert.That(uut.Power(3, 3), Is.EqualTo(27));
+            Assert.That(uut.Power(a, b), Is.EqualTo(c));
         }
 
         [TestCase(15,5,3)]
@@ -81,61 +77,53 @@ namespace Calculator.Test.Unit
             Assert.That(uut.Accumulator, Is.EqualTo(e));
         }
 
-        [Test]
-        public void Test_Accumulator_Add_Clear_zero()
+        [TestCase(2,3,0)]
+        [TestCase(4,7,0)]
+        [TestCase(10, 20, 0)]
+        public void Test_Accumulator_Add_Clear_zero(double a, double b, double c)
         {
             //Arrange in Setup 
 
             //Act
-            uut.Add(2, 3);
+            uut.Add(a, b);
             uut.Clear();
 
             //Assert
-            Assert.That(uut.Accumulator, Is.EqualTo(0));
+            Assert.That(uut.Accumulator, Is.EqualTo(c));
         }
 
-        [Test]
-        public void Test_Clear_Add1_7()
+        [TestCase(2, 3, 5)]
+        [TestCase(7, 10, 17)]
+        [TestCase(4, 2, 6)]
+        public void Test_Clear_Add1(double a, double b, double c)
         {
             //Arrange in Setup 
 
             //Act
             uut.Clear();
-            uut.Add1(3);
-            uut.Add1(4);
+            uut.Add1(a);
+            uut.Add1(b);
 
             //Assert
-            Assert.That(uut.Accumulator, Is.EqualTo(7));
-        }
-
-        [Test]
-        public void Test_Clear_Add1_121()
-        {
-            //Arrange in Setup 
-
-            //Act
-            uut.Clear();
-            uut.Add1(76);
-            uut.Add1(45);
-
-            //Assert
-            Assert.That(uut.Accumulator, Is.EqualTo(121));
+            Assert.That(uut.Accumulator, Is.EqualTo(c));
         }
 
 
-        [Test]
-        public void Test_Clear_Subtract1_12()
+        [TestCase(15, 2, 2,11)]
+        [TestCase(20, 5, 5,10)]
+        [TestCase(50, 10, 5,35)]
+        public void Test_Clear_Subtract1(double a, double b, double c, double d)
         {
             //Arrange in Setup 
 
             //Act
             uut.Clear();
-            uut.Add1(19);
-            uut.Subtract1(3);
-            uut.Subtract1(4);
+            uut.Add1(a);
+            uut.Subtract1(b);
+            uut.Subtract1(c);
 
             //Assert
-            Assert.That(uut.Accumulator, Is.EqualTo(12));
+            Assert.That(uut.Accumulator, Is.EqualTo(d));
         }
 
         [Test]

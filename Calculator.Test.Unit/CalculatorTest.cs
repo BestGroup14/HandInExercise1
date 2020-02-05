@@ -122,6 +122,21 @@ namespace Calculator.Test.Unit
         }
 
         [Test]
+        public void Test_Clear_Add1_121()
+        {
+            //Arrange in Setup 
+
+            //Act
+            uut.Clear();
+            uut.Add1(76);
+            uut.Add1(45);
+
+            //Assert
+            Assert.That(uut.Accumulator, Is.EqualTo(121));
+        }
+
+
+        [Test]
         public void Test_Clear_Subtract1_12()
         {
             //Arrange in Setup 

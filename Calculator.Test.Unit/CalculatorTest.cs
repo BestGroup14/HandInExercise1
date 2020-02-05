@@ -126,89 +126,55 @@ namespace Calculator.Test.Unit
             Assert.That(uut.Accumulator, Is.EqualTo(d));
         }
 
-        [Test]
-        public void Test_Clear_Multiply1_380()
+        [TestCase(15, 2, 2, 60)]
+        [TestCase(20, 5, 5, 500)]
+        [TestCase(50, 1, 5, 250)]
+        public void Test_Clear_Multiply1(double a, double b, double c, double d)
         {
-            //Arrange in Setup 
-
-            //Act
             uut.Clear();
-            uut.Add1(19);
-            uut.Multiply1(10);
-            uut.Multiply1(2);
+            uut.Add1(a);
+            uut.Multiply1(b);
+            uut.Multiply1(c);
 
-            //Assert
-            Assert.That(uut.Accumulator, Is.EqualTo(380));
+            Assert.That(uut.Accumulator, Is.EqualTo(d));
         }
 
-        [Test]
-        public void Test_Clear_Divide1_5()
+        [TestCase(20, 2, 2, 5)]
+        [TestCase(100, 5, 5, 4)]
+        [TestCase(40, 4, 5, 2)]
+        public void Test_Clear_Divide1(double a, double b, double c, double d)
         {
-            //Arrange in Setup 
-
-            //Act
             uut.Clear();
-            uut.Add1(60);
-            uut.Divide1(6);
-            uut.Divide1(2);
+            uut.Add1(a);
+            uut.Divide1(b);
+            uut.Divide1(c);
 
-            //Assert
-            Assert.That(uut.Accumulator, Is.EqualTo(5));
+            Assert.That(uut.Accumulator, Is.EqualTo(d));
         }
 
-        [Test]
-        public void Test_Clear_Power1_10000()
+        [TestCase(2, 2, 2, 16)]
+        [TestCase(5, 3, 2, 15625)]
+        [TestCase(4, 4, 1, 256)]
+        [TestCase(2,2,-2,0.0625)]
+        [TestCase(5,2,0,1)]
+        public void Test_Clear_Power1(double a, double b, double c, double d)
         {
-            //Arrange in Setup 
-
-            //Act
             uut.Clear();
-            uut.Add1(10);
-            uut.Power1(2);
-            uut.Power1(2);
+            uut.Add1(a);
+            uut.Power1(b);
+            uut.Power1(c);
 
-            //Assert
-            Assert.That(uut.Accumulator, Is.EqualTo(10000));
+            Assert.That(uut.Accumulator, Is.EqualTo(d));
         }
 
-        [Test]
-        public void Test_Clear_Power1_001()
-        {
-            //Arrange in Setup 
-
-            //Act
-            uut.Clear();
-            uut.Add1(10);
-            uut.Power1(-2);
-
-            //Assert
-            Assert.That(uut.Accumulator, Is.EqualTo(0.01));
-        }
-
-        [Test]
-        public void Test_Clear_Power1_1()
-        {
-            //Arrange in Setup 
-
-            //Act
-            uut.Clear();
-            uut.Add1(10);
-            uut.Power1(0);
-
-            //Assert
-            Assert.That(uut.Accumulator, Is.EqualTo(1));
-        }
 
         [Test]
         public void Test_Divide1_Exception()
         {
-            //Arrange in Setup 
 
-            //Act
             uut.Clear();
             uut.Add1(10);
 
-            //Assert
             Assert.Catch<Exception>(() => uut.Divide1(0));
         }
     }

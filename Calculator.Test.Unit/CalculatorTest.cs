@@ -51,47 +51,34 @@ namespace Calculator.Test.Unit
             Assert.That(uut.Power(3, 3), Is.EqualTo(27));
         }
 
-        [Test]
-        public void Test_Divide_3()
+        [TestCase(15,5,3)]
+        [TestCase(100,5,20)]
+        [TestCase(30,4,7.5)]
+        [TestCase(10,0,0)]
+        public void Test_Divide(double a, double b, double c)
         {
-            //Arrange in Setup 
-
-            //Act + Assert
-            Assert.That(uut.Divide(15, 5), Is.EqualTo(3));
+            Assert.That(uut.Divide(a, b), Is.EqualTo(c));
         }
 
-        [Test]
-        public void Test_Divider_0()
+        [TestCase(34,3,37)]
+        [TestCase(12,7,19)]
+        [TestCase(31,67,98)]
+        public void Test_Accumulator_Add(double a, double b, double c)
         {
-            //Arrange in Setup 
+            uut.Add(a, b);
 
-            //Act + Assert
-            Assert.That(uut.Divide(3, 0), Is.EqualTo(0));
+            Assert.That(uut.Accumulator, Is.EqualTo(c));
         }
 
-        [Test]
-        public void Test_Accumulator_Add_5()
+        [TestCase(2,5,16,3,13)]
+        [TestCase(20,41,33,6,27)]
+        [TestCase(2,78,17,13,4)]
+        public void Test_Accumulator_Add_Subtract(double a, double b, double c, double d, double e)
         {
-            //Arrange in Setup 
+            uut.Add(a, b);
+            uut.Subtract(c, d);
 
-            //Act
-            uut.Add(2, 3);
-
-            //Assert
-            Assert.That(uut.Accumulator, Is.EqualTo(5));
-        }
-
-        [Test]
-        public void Test_Accumulator_Add_Subtract_13()
-        {
-            //Arrange in Setup 
-
-            //Act
-            uut.Add(2, 3);
-            uut.Subtract(20, 7);
-
-            //Assert
-            Assert.That(uut.Accumulator, Is.EqualTo(13));
+            Assert.That(uut.Accumulator, Is.EqualTo(e));
         }
 
         [Test]

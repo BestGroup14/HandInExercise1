@@ -15,40 +15,36 @@ namespace Calculator.Test.Unit
             uut = new Calc();
         }
 
-        [Test]
-        public void Test_Add_91()
+        [TestCase(10,5,15)]
+        [TestCase(30,2,32)]
+        [TestCase(200,43,243)]
+        public void Test_Add(double a, double b, double c)
         {
-            //Arrange in Setup 
-
-            //Act + Assert
-            Assert.That(uut.Add(24,67),Is.EqualTo(91));
+            Assert.That(uut.Add(a,b),Is.EqualTo(c));
         }
 
-        [Test]
-        public void Test_Subtract_55()
+        [TestCase(100,99,1)]
+        [TestCase(20,3,17)]
+        [TestCase(40,6,34)]
+        public void Test_Subtract(double a,double b,double c)
         {
-            //Arrange in Setup 
-
-            //Act + Assert
-            Assert.That(uut.Subtract(100,45), Is.EqualTo(55));
+            Assert.That(uut.Subtract(a,b), Is.EqualTo(c));
         }
 
-        [Test]
-        public void Test_Multiply_120()
+        [TestCase(2,10,20)]
+        [TestCase(3,7,21)]
+        [TestCase(4,3,12)]
+        public void Test_Multiply(double a, double b, double c)
         {
-            //Arrange in Setup 
-
-            //Act + Assert
-            Assert.That(uut.Multiply(20, 6), Is.EqualTo(120));
+            Assert.That(uut.Multiply(a, b), Is.EqualTo(c));
         }
 
-        [Test]
-        public void Test_Power_27()
+        [TestCase(3,3,27)]
+        [TestCase(2,2,4)]
+        [TestCase(100,2,10000)]
+        public void Test_Power(double a, double b, double c)
         {
-            //Arrange in Setup 
-
-            //Act + Assert
-            Assert.That(uut.Power(3, 3), Is.EqualTo(27));
+            Assert.That(uut.Power(a, b), Is.EqualTo(c));
         }
 
         [Test]
